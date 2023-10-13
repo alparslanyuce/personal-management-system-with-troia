@@ -85,19 +85,25 @@ THIS.SEARCH();
 --------------------------------------------------------------------------------------
 (deleting method) 
 
+OBJECT: 
+TABLE PERSONELBILGISI;
 PARAMETERS:
  INTEGER PERSONALNO;
+ 
+ IF PERSONELBILGISI_SELECTED == 1 THEN
  BEGINTRAN;
- DELETE FROM EDUTESTTABLE 
- WHERE PERSONALNO = PERSONALNO;
+ DELETE FROM PERSONELBILGISI 
+ WHERE PERSONALNO = PERSONELBILGISI_PERSONALNO;
  
 IF SYS_STATUS== 1 THEN 
     ROLLBACKTRAN;
-    RETURN 0;
+    RETURN ;
 ELSE 
+   
     MESSAGE SYS E25002 WITH '!!!';
 ENDIF;
-COMMITTRAN;
+ COMMITTRAN;
+ ENDIF;
 --------------------------------------------------------------------------------------
 (resettexts method)
 
